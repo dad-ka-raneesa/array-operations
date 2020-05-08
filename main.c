@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 #include "int_array.h"
 #include "map.h"
 #include "filter.h"
+#include "reduce.h"
 
 int main(void){
+  int result;
   Int_array *numbers = malloc(sizeof(Int_array));
   numbers->length = 5;
   numbers->values = malloc(sizeof(int) * numbers->length);
@@ -40,5 +43,13 @@ int main(void){
   display_int_array(new_array);
   printf("\n");
 
+  printf("Reduce Operation:\n");
+  Function_for_reduce reduce_functions[2] = {&get_smaller_number, &get_greater_number};
+  result = reduce(numbers, INFINITY, reduce_functions[0]);
+  printf("Reduce result(Smallest number): %d", result);
+  printf("\n");
+  result = reduce(numbers, 0, reduce_functions[1]);
+  printf("Reduce result(Greater number): %d", result);
+  printf("\n");
   return 0;
 }
