@@ -6,6 +6,8 @@
 #include "filter.h"
 #include "reduce.h"
 
+#define NEW_LINE printf("\n");
+
 int main(void){
   int result;
   Int_array *numbers = malloc(sizeof(Int_array));
@@ -19,7 +21,7 @@ int main(void){
 
   printf("Original array: ");
   display_int_array(numbers);
-  printf("\n");
+  NEW_LINE;
 
   printf("Map Operation:\n");
   Function_for_map map_functions[2] = {&square_of_num,&double_of_num};
@@ -30,7 +32,7 @@ int main(void){
   new_array = map(numbers, map_functions[1]);
   printf("New array(Doubles): ");
   display_int_array(new_array);
-  printf("\n");
+  NEW_LINE;
 
   printf("Filter Operation:\n");
   Function_for_filter filter_functions[2] = {&is_even,&is_odd};
@@ -41,16 +43,16 @@ int main(void){
   new_array = filter(numbers, filter_functions[1]);
   printf("New array(Odds): ");
   display_int_array(new_array);
-  printf("\n");
+  NEW_LINE;
 
   printf("Reduce Operation:\n");
   Function_for_reduce reduce_functions[2] = {&get_smaller_number, &get_greater_number};
   result = reduce(numbers, INFINITY, reduce_functions[0]);
   printf("Reduce result(Smallest number): %d", result);
-  printf("\n");
+  NEW_LINE;
 
   result = reduce(numbers, 0, reduce_functions[1]);
   printf("Reduce result(Greater number): %d", result);
-  printf("\n");
+  NEW_LINE;
   return 0;
 }
