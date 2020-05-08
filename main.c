@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include <math.h>
 #include "int_array.h"
 #include "map.h"
 #include "filter.h"
@@ -48,6 +48,7 @@ int main(void){
   result = reduce(numbers, INFINITY, reduce_functions[0]);
   printf("Reduce result(Smallest number): %d", result);
   printf("\n");
+
   result = reduce(numbers, 0, reduce_functions[1]);
   printf("Reduce result(Greater number): %d", result);
   printf("\n");
