@@ -13,14 +13,14 @@ int double_of_num(int value)
   return value + value;
 }
 
-Int_array *map(Int_array *array, Function mapper)
+Int_array *map(Int_array *array, Function_for_map mapper)
 {
-  Int_array *newArray = malloc(sizeof(Int_array));
-  newArray->length = array->length;
-  newArray->values = malloc(sizeof(int) * newArray->length);
+  Int_array *new_array = malloc(sizeof(Int_array));
+  new_array->length = array->length;
+  new_array->values = malloc(sizeof(int) * new_array->length);
   FOR_EACH(0, array->length)
   {
-    newArray->values[i] = mapper(array->values[i]);
+    new_array->values[i] = mapper(array->values[i]);
   }
-  return newArray;
+  return new_array;
 }

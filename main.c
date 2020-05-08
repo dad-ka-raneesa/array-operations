@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "int_array.h"
 #include "map.h"
+#include "filter.h"
 
 int main(void){
   Int_array *numbers = malloc(sizeof(Int_array));
@@ -15,15 +16,29 @@ int main(void){
 
   printf("Original array: ");
   display_int_array(numbers);
+  printf("\n");
 
-  Function operations[2] = {&square_of_num,&double_of_num};
-  Int_array *new_array = map(numbers, operations[0]);
+  printf("Map Operation:\n");
+  Function_for_map map_functions[2] = {&square_of_num,&double_of_num};
+  Int_array *new_array = map(numbers, map_functions[0]);
   printf("New array(Squares): ");
   display_int_array(new_array);
 
-  new_array = map(numbers, operations[1]);
+  new_array = map(numbers, map_functions[1]);
   printf("New array(Doubles): ");
   display_int_array(new_array);
+  printf("\n");
+
+  printf("Filter Operation:\n");
+  Function_for_filter filter_functions[2] = {&is_even,&is_odd};
+  new_array = filter(numbers, filter_functions[0]);
+  printf("New array(Evens): ");
+  display_int_array(new_array);
+
+  new_array = filter(numbers, filter_functions[1]);
+  printf("New array(Odds): ");
+  display_int_array(new_array);
+  printf("\n");
 
   return 0;
 }
