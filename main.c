@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "int_array.h"
+#include "map.h"
 
 int main(void){
   Int_array *numbers = malloc(sizeof(Int_array));
@@ -14,5 +15,15 @@ int main(void){
 
   printf("Original array: ");
   display_int_array(numbers);
+
+  Function operations[2] = {&square_of_num,&double_of_num};
+  Int_array *new_array = map(numbers, operations[0]);
+  printf("New array(Squares): ");
+  display_int_array(new_array);
+
+  new_array = map(numbers, operations[1]);
+  printf("New array(Doubles): ");
+  display_int_array(new_array);
+
   return 0;
 }
